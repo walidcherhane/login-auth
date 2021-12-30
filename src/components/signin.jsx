@@ -16,6 +16,7 @@ function Signin() {
     e.preventDefault();
     try {
       setLoading(true)
+      setError(null)
       await signin(auth, email, password);
       navigate("/dashboard");
     } catch (err) {

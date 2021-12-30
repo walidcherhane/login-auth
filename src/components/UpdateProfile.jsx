@@ -17,6 +17,7 @@ function UpdateProfile() {
     e.preventDefault();
       try{
         setLoading(true)
+        setError(null)
         await updateProfile(currentUser, {
           displayName: name ? name : currentUser.displayName,
           photoURL: profilePicture ? profilePicture : currentUser.photoURL,

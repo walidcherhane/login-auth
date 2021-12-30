@@ -20,6 +20,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       setLoading(true)
+      setError(null)
       await signout(auth);
       Navigate("/login");
     } catch (error) {
