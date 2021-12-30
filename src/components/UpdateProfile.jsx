@@ -10,25 +10,26 @@ function UpdateProfile() {
   const [profilePicture, setProfilePicture] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const Navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     e.preventDefault();
-
-    updateProfile(currentUser, {
-      displayName: name ? name : currentUser.displayName,
-      photoURL: profilePicture ? profilePicture : currentUser.photoURL,
-      phoneNumber: phone ? phone : currentUser.phoneNumber,
-    })
-      .then(() => {
+      try{
+        setLoading(true)
+        await updateProfile(currentUser, {
+          displayName: name ? name : currentUser.displayName,
+          photoURL: profilePicture ? profilePicture : currentUser.photoURL,
+          phoneNumber: phone ? phone : currentUser.phoneNumber,
+        })
         alert("Updated Successfully");
         setError(null);
         window.location.reload();
         Navigate("/dashboard");
-      })
-      .catch(() => {
+      } catch (err){
         setError("Failed To Update Profile");
-      });
+        setLoading(false)
+      }
   };
 
   return (
@@ -57,6 +58,7 @@ function UpdateProfile() {
                   className="form-control"
                   type="text"
                   placeholder="Leave Blank to keep the same"
+                  required
                 />
               </div>
               <div className="col-md-6">
@@ -71,6 +73,7 @@ function UpdateProfile() {
                   className="form-control"
                   type="tel"
                   placeholder="Leave Blank to keep the same"
+                  required
                 />
               </div>
               <div className="col-md-6">
@@ -85,11 +88,12 @@ function UpdateProfile() {
                   className="form-control"
                   type="text"
                   placeholder="Leave Blank to keep the same"
+                  required
                 />
               </div>
             </div>
             <div className="col-md-8 my-3">
-              <button type="submit" className="btn btn-primary me-4 mb-3">
+              <button type="submit" className="btn btn-primary me-4 mb-3" disabled={loading}>
                 Update Info
               </button>
             </div>

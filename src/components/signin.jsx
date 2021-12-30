@@ -8,12 +8,14 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { signin } = useAuth();
   const navigate = useNavigate();
 
   const SignInHandler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       await signin(auth, email, password);
       navigate("/dashboard");
     } catch (err) {
@@ -27,6 +29,7 @@ function Signin() {
         default:
           setError("Failed to create account, Try again later");
       }
+      setLoading(false)
     }
   };
   return (
@@ -70,6 +73,7 @@ function Signin() {
                 type="submit"
                 onClick={SignInHandler}
                 className="btn btn-primary px-4 rounded-pill"
+                disabled={loading}
               >
                 Sign in
               </button>

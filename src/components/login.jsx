@@ -7,12 +7,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const LogInHandler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       await login(auth, email, password);
       navigate("/dashboard");
     } catch (err) {
@@ -33,6 +35,7 @@ function Login() {
         default:
           setError("Sorry: Failed To log in,Please contact the admin");
       }
+      setLoading(false)
     }
   };
 
@@ -80,6 +83,7 @@ function Login() {
               <button
                 type="submit"
                 className="btn btn-primary px-4 rounded-pill "
+                disabled={loading}
               >
                 Log in
               </button>

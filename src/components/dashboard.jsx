@@ -8,19 +8,23 @@ function Dashboard() {
   const [error, setError] = useState(null);
   const { signout, currentUser } = useAuth();
   const Navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   // if (!currentUser.displayName) {
   //   currentUser.displayName = "[Not set yet]";
   // } else if (!currentUser.photoURL) {
   //   currentUser.photoURL =
   //     "https://media.istockphoto.com/photos/close-up-portrait-of-smiling-man-with-eyeglasses-in-blue-shirt-3d-of-picture-id1294780139";
   // }
-  const logOutHandler = (e) => {
+  const logOutHandler = async (e) => {
     e.preventDefault();
     try {
-      signout(auth);
+      setLoading(true)
+      await signout(auth);
       Navigate("/login");
     } catch (error) {
       setError("Failed to log Out, Try again...");
+      setLoading(false)
     }
   };
   return (
@@ -71,10 +75,11 @@ function Dashboard() {
                   id="log-out"
                   onClick={logOutHandler}
                   className="btn btn-primary me-4"
+                  disabled={loading}
                 >
                   Log out
                 </button>
-                <Link className="btn btn-dark text-light" to="/update-profile">
+                <Link className="btn btn-dark text-light" to="/update-profile" disabled={loading}>
                   Update Profile
                 </Link>
               </div>
