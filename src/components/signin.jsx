@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth, setName } from "../contexts/AuthContext";
 import { auth } from "./firebase/config";
 
 function Signin() {
@@ -45,6 +45,18 @@ function Signin() {
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 )}
+            <div className="col p-3">
+              <label htmlFor="name" className="form-label">
+                Full Name
+              </label>
+              <input
+                type="email"
+                onChange={(e) => setName(e.target.value)}
+                className="form-control"
+                id="email"
+                required
+              />
+            </div>
             <div className="col p-3">
               <label htmlFor="email" className="form-label">
                 E-mail

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { auth } from "./firebase/config";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth, name } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
@@ -43,7 +43,7 @@ function Dashboard() {
               </div>
               {currentUser.displayName && (
                 <div className="col shadow-sm bg-white text-start rounded-3 p-3">
-                  <strong>Name</strong> {currentUser.displayName}
+                  <strong>Name</strong> {name}
                 </div>
               )}
 
