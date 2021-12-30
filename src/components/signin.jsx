@@ -35,11 +35,12 @@ function Signin() {
         <div className="text-center display-5 mb-2">Sign up</div>
         <div className="row">
           <div className="mx-auto col-lg-8">
-            {error && (
-              <div className="alert alert-warning" role="alert">
-                {error}
-              </div>
-            )}
+          {error && (
+                  <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                    {error}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                )}
             <div className="col p-3">
               <label htmlFor="email" className="form-label">
                 E-mail

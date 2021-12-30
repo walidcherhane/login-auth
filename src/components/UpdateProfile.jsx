@@ -38,9 +38,10 @@ function UpdateProfile() {
           <form onSubmit={handleChange}>
             <div className="row">
               <div className="col-12">
-                {error && (
-                  <div className="alert alert-warning" role="alert">
+              {error && (
+                  <div className="alert alert-warning alert-dismissible fade show" role="alert">
                     {error}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 )}
               </div>
