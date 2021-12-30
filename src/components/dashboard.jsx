@@ -34,8 +34,6 @@ function Dashboard() {
                   src={currentUser.photoURL && currentUser.photoURL}
                   alt={currentUser.displayName && currentUser.displayName}
                   className="img-thumbnail  mx-auto rounded-circle shadow border border-3 border-warning object-fit-cover"
-                  width={100 + "px"}
-                  height={100 + "px"}
                 />
               </div>
               {currentUser.displayName && (
