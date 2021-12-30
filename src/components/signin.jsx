@@ -88,7 +88,7 @@ function Signin() {
                 className="btn btn-primary px-4 rounded-pill"
                 disabled={loading}
               >
-                Sign in
+                Sign UP
               </button>
             </div>
             <div className="w-100 text-center mt-2">
