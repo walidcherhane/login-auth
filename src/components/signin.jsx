@@ -50,10 +50,10 @@ function Signin() {
                 Full Name
               </label>
               <input
-                type="email"
+                type="text"
                 onChange={(e) => setName(e.target.value)}
                 className="form-control"
-                id="email"
+                id="name"
                 required
               />
             </div>
