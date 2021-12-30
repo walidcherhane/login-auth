@@ -29,11 +29,11 @@ function Dashboard() {
         <div className="px-4 py-5 text-center">
           <div className="col-md-8 px-4 py-5 mx-auto bg-light rounded-3">
             <div className="row flex-column">
-              <div className="col mb-4">
+              <div className="col mb-4 profile-pic bg-light">
                 <img
                   src={currentUser.photoURL && currentUser.photoURL}
                   alt={currentUser.displayName && currentUser.displayName}
-                  className="img-thumbnail profile-pic mx-auto rounded-circle shadow border border-3 border-warning object-fit-cover"
+                  className="img-thumbnail  mx-auto rounded-circle shadow border border-3 border-warning object-fit-cover"
                   width={100 + "px"}
                   height={100 + "px"}
                 />
