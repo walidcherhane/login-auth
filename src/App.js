@@ -1,6 +1,6 @@
 import Login from "./components/login";
 import Nav from "./components/nav";
-import Signin from "./components/signin";
+import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
 import UpdateProfile from "./components/UpdateProfile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import "./index.css";
 import Private from "./components/Private";
 
+import 'semantic-ui-css/semantic.min.css';
 function App() {
   return (
     <AuthProvider>
@@ -23,7 +24,7 @@ function App() {
             </Route>
             <Route exact path="/" element={<Public />}>
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/signin" element={<Signin />} />
+              <Route exact path="/signup" element={<Signup />} />
             </Route>
           </Routes>
         </Router>
