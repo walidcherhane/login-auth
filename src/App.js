@@ -3,8 +3,9 @@ import Nav from "./components/nav";
 import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
 import UpdateProfile from "./components/UpdateProfile";
+import  UpdatePassword  from "./components/updatePassword";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import PrivateRoute from "./components/Private";
+import SnackbarProvider from 'react-simple-snackbar'
 import Public from "./components/Public";
 import { AuthProvider } from "./contexts/AuthContext";
 import "./index.css";
@@ -14,6 +15,7 @@ import 'semantic-ui-css/semantic.min.css';
 function App() {
   return (
     <AuthProvider>
+    <SnackbarProvider>
       <div className="App">
         <Router>
           <Nav />
@@ -25,10 +27,12 @@ function App() {
             <Route exact path="/" element={<Public />}>
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
+              <Route exact path='/UpdatePassword' element={<UpdatePassword />} />
             </Route>
           </Routes>
         </Router>
       </div>
+      </SnackbarProvider>
     </AuthProvider>
   );
 }
